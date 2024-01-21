@@ -15,32 +15,31 @@ DisplayText::~DisplayText()
     this->lcd->off();
 }
 
-char *DisplayText::getTextData()
+char** DisplayText::getTextData()
 {
-    // Serial print whole text array
-    // for (int i = 0; i < 16; i++)
-    // {
-    //     Serial.print(this->text[i][0]);
-    // }
-    // for (int i = 0; i < 16; i++)
-    // {
-    //     Serial.print(this->text[i][1]);
-    // }
-    return (char *)this->text;
+    char** result = new char*[16];
+    for (int i = 0; i < 16; ++i)
+    {
+        result[i] = new char[2];
+        result[i][0] = this->text[i][0];
+        result[i][1] = this->text[i][1];
+    }
+    return result;
 }
 
-char *DisplayText::formatTextData(char* text)
+char* DisplayText::Utils::formatTextData(char** text)
 {
     char *result = (char *)malloc(32 * sizeof(char));
     for (int i = 0; i < 16; i++)
     {
-        result[i] = this->text[i][0];
+        result[i] = text[i][0];
     }
     for (int i = 0; i < 16; i++)
     {
-        result[i + 16] = this->text[i][1];
+        result[i + 16] = text[i][1];
     }
     return result;
+    free(result);
 }
 
 void DisplayText::addChar(char c)
@@ -280,4 +279,5 @@ char DisplayText::selectOption(const char options[], char stopKey)
             }
         }
     }
+    return '\0';
 }
