@@ -1,0 +1,19 @@
+{
+    "name": "LCD-display-interface-lib",
+    "author": "Timur Dzhesur",
+    "keywords": "LCD, display-interface, I2C, lib, display-lib",
+    "description": "A library for controlling and managing data displayed on Liquid Crystal Displays (LCD)",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ArdUiNOKUL/LCD-display-interface-lib.git"
+    },
+    "frameworks": "arduino",
+    "version": "1.0",
+    "dependencies": [
+        {
+            "owner": "marcoschwartz",
+            "name": "LiquidCrystal_I2C",
+            "version": "^1.1.4"
+        }
+    ]
+}
